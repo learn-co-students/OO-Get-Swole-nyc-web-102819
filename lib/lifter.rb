@@ -25,10 +25,19 @@ class Lifter
     end
   end
 
+  # avg lift using each
   def self.avg_lift
     sum = 0
     self.all.each do |each|
      sum += each.lift_total
+    end
+    sum/self.all.count
+  end
+
+  # avg lift using reduce
+  def self.avg_lift2
+    sum = self.all.reduce(0) do |acc, each|
+      acc + each.lift_total
     end
     sum/self.all.count
   end
